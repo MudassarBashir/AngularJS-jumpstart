@@ -1,0 +1,13 @@
+.red {
+    color: red;
+}
+
+.navy {
+    color: navy;
+}
+
+/* ng-cloak is provided here because by the time the script loads its too late, the
+ stylesheet will load earlier */
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+    display: none !important;
+}

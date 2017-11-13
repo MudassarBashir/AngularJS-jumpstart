@@ -3,15 +3,29 @@
     <head>
         <meta charset="UTF-8">
         <title>Angular JS</title>
+        <link href="styles/styles.css" rel="stylesheet" type="text/css" />
     </head>
+    <!--
+        ng-cloak, ng-switch, ng-class, ng-show
+    -->
 
-    <body ng-init="name='James'">
-        <div ng-hide="isHidden">
-            Name: <input type="text" ng-model="name" /> {{ name }}
+    <body
+            ng-init="data={name:'James', isVisible: true, loggedIn: true, status: 'navy'}">
+        <div>
+            <div ng-switch on="data.loggedIn">
+                <div ng-cloak ng-switch-when="true" ng-class="data.status">
+                        Welcome {{ data.name }}
+                </div>
+                <div ng-switch-default ng-class="data.status">
+                    Login
+                </div>
+            </div>
         </div>
-        Hide: <input type="checkbox" ng-model="isHidden"/>
         <br />
-        <button ng-click="name='Mike'">Change Name</button>
+        <div ng-cloak ng-show="data.isVisible">
+            Name: <input type="text" ng-model="data.name" />
+            {{ data.name }}
+        </div>
         <script src="scripts/angular-1.6.js"></script>
     </body>
 </html>
