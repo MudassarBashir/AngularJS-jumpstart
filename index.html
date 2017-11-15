@@ -2,30 +2,17 @@
 <html ng-app>
     <head>
         <meta charset="UTF-8">
-        <title>Angular JS</title>
+        <title>Iterating Over Data</title>
         <link href="styles/styles.css" rel="stylesheet" type="text/css" />
     </head>
     <!--
         ng-cloak, ng-switch, ng-class, ng-show
     -->
 
-    <body
-            ng-init="data={name:'James', isVisible: true, loggedIn: true, status: 'navy'}">
-        <div>
-            <div ng-switch on="data.loggedIn">
-                <div ng-cloak ng-switch-when="true" ng-class="data.status">
-                        Welcome {{ data.name }}
-                </div>
-                <div ng-switch-default ng-class="data.status">
-                    Login
-                </div>
-            </div>
-        </div>
-        <br />
-        <div ng-cloak ng-show="data.isVisible">
-            Name: <input type="text" ng-model="data.name" />
-            {{ data.name }}
-        </div>
+    <body ng-init="people=[{name: 'John', city: 'Chandler'}, {name: 'Dave', city: 'Seattle'}, {name: 'Tina', city: 'New York'}, {name: 'John', city: 'Chandler'}]">
+        <ul>
+            <li ng-repeat="person in people">{{ person.name }}</li>
+        </ul>
         <script src="scripts/angular-1.6.js"></script>
     </body>
 </html>
