@@ -10,9 +10,16 @@
     -->
 
     <body ng-init="people=[{name: 'John', city: 'Chandler'}, {name: 'Dave', city: 'Seattle'}, {name: 'Tina', city: 'New York'}, {name: 'John', city: 'Chandler'}]">
-        <ul>
-            <li ng-repeat="person in people">{{ person.name }}</li>
-        </ul>
+        <table>
+            <tr>
+                <td>Name</td>
+                <td>City</td>
+            </tr>
+            <tr ng-repeat="person in people">
+                <td>{{ person.name }}</td>
+                <td>{{ person.city }}</td>
+            </tr>
+        </table>
         <script src="scripts/angular-1.6.js"></script>
     </body>
 </html>
