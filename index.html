@@ -9,15 +9,21 @@
         ng-cloak, ng-switch, ng-class, ng-show
     -->
 
-    <body ng-init="people=[{name: 'John', city: 'Chandler'}, {name: 'Dave', city: 'Seattle'}, {name: 'Tina', city: 'New York'}, {name: 'John', city: 'Chandler'}]">
+    <body ng-init="customers=[{joined: '2000-12-02', name: 'John', city: 'Chandler', orderTotal: 9.9956}, {joined: '1965-01-25', name: 'Zed', city: 'Las Vegas', orderTotal: 19.99}, {joined: name: 'Tina', city: 'New York'}, {name: 'John', city: 'Chandler'}]">
+        <h2>Customers</h2>
+        Filter: <input type="text" />
         <table>
             <tr>
                 <td>Name</td>
                 <td>City</td>
+                <td>Order</td>
+                <td>Joined</td>
             </tr>
-            <tr ng-repeat="person in people">
-                <td>{{ person.name }}</td>
-                <td>{{ person.city }}</td>
+            <tr ng-repeat="cust in customers">
+                <td>{{ cust.name }}</td>
+                <td>{{ cust.city }}</td>
+                <td>{{ cust.orderTotal }}</td>
+                <td>{{ cust.joined }}</td>
             </tr>
         </table>
         <script src="scripts/angular-1.6.js"></script>
