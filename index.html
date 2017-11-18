@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html ng-app>
+
     <head>
         <meta charset="UTF-8">
         <title>Iterating Over Data</title>
@@ -8,16 +9,18 @@
     <!--
         ng-cloak, ng-switch, ng-class, ng-show
     -->
+    <body>
 
-    <body ng-init="customers=[{joined: '2000-12-02', name: 'John', city: 'Chandler', orderTotal: 9.9956}, {joined: '1965-01-25', name: 'Zed', city: 'Las Vegas', orderTotal: 19.99}, {joined: '1944-06-15', name: 'Tina', city: 'New York', orderTotal: 44.99}, {joined: '1995-03-28', name: 'Dave', city: 'Seattle', orderTotal: 101.5}]">
         <h2>Customers</h2>
+
         Filter: <input type="text" ng-model="customerFilter"/>
+
         <table>
             <tr>
-                <th ng-click="sortBy='name';reverse=!reverse">Name</th>
-                <th ng-click="sortBy='city';reverse=!reverse">City</th>
-                <th ng-click="sortBy='orderTotal';reverse=!reverse">Order</th>
-                <th ng-click="sortBy='joined';reverse=!reverse">Joined</th>
+                <th ng-click="doSort('name')">Name</th>
+                <th ng-click="doSort('city')">City</th>
+                <th ng-click="doSort('orderTotal')">Order</th>
+                <th ng-click="doSort('joined')">Joined</th>
             </tr>
             <tr ng-repeat="cust in customers | filter:customerFilter | orderBy:sortBy:reverse">
                 <td>{{ cust.name }}</td>
@@ -26,7 +29,24 @@
                 <td>{{ cust.joined | date}}</td>
             </tr>
         </table>
+        <br />
+        <span>Total customers: {{ customers.length }}</span>
 
         <script src="scripts/angular-1.6.js"></script>
+        <script>
+            function CustomersController($scope) {
+                $scope.customers = [
+                                    {joined: '2000-12-02', name: 'John', city: 'Chandler', orderTotal: 9.9956},
+                                    {joined: '1965-01-25', name: 'Zed', city: 'Las Vegas', orderTotal: 19.99},
+                                    {joined: '1944-06-15', name: 'Tina', city: 'New York', orderTotal: 44.99},
+                                    {joined: '1995-03-28', name: 'Dave', city: 'Seattle', orderTotal: 101.5}
+                ]
+                $scope.doSort = function(propName) {
+                    $scope.sortBy = propName;
+                    $scope.reverse = !$scope.reverse;
+                }
+            }
+        </script>
     </body>
+
 </html>
