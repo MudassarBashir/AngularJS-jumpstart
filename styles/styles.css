@@ -11,3 +11,9 @@
 [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
     display: none !important;
 }
+
+th {
+    background-color: lightgrey;
+    padding-left: 15px;
+    padding-right: 15px;
+}
