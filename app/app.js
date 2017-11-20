@@ -1,4 +1,8 @@
 /**
  * Defining our application's module.
  */
-angular.module('customersApp', []);
+(function() {
+
+    var app = angular.module('customersApp', ['ngRoute']);
+
+}());
