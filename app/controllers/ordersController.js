@@ -1,16 +1,22 @@
 /**
- * Defining a controller.
+ * Controller for orders data.
  */
- (function () {
-     // declaring the content of the controller
-    var CustomersController = function ($scope) {
+(function () {
+    // declaring the content of the controller
+    var OrdersController = function ($scope, $routeParams) {
 
-        $scope.sortBy = 'name';
-        $scope.reverse = false;
+        var customerId = $routeParams.customerId;
 
-        $scope.doSort = function (propName) {
-            $scope.sortBy = propName;
-            $scope.reverse = !$scope.reverse;
+        $scope.orders = null;
+
+        function init() {
+            // Search the customers for the given customerId
+            for (var i=0, len=$scope.customers.length; i < len; i++) {
+                if ($scope.customers[i].id === parseInt(customerId)) {
+                    $scope.orders = $scope.customers[i].orders;
+                    break;
+                }
+            }
         }
 
         $scope.customers = [
@@ -68,11 +74,13 @@
 
         ];
 
+        init();
+
     };
 
-     CustomersController.$inject = ['$scope'];
+    OrdersController.$inject = ['$scope', '$routeParams'];
 
     // hooking the controller up to our application's main module
-    angular.module('customersApp').controller('CustomersController', CustomersController);
+    angular.module('customersApp').controller('OrdersController', OrdersController);
 
 }());
