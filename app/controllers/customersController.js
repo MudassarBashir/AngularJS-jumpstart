@@ -1,16 +1,17 @@
 /**
- * Customers controller.
+ * Customers controller. This controller is using a service as opposed to a factory that exists
+ * with the exact same functionality. Just to show how a service can be used in place of a factory.
  */
  (function () {
 
-     var CustomersController = function ($scope, customersFactory) {
+     var CustomersController = function ($scope, customersService) {
 
         $scope.sortBy = 'name';
         $scope.reverse = false;
         $scope.customers = [];
 
         function init() {
-            $scope.customers = customersFactory.getCustomers();
+            $scope.customers = customersService.getCustomers();
         }
 
         init();
@@ -22,7 +23,7 @@
 
     };
 
-     CustomersController.$inject = ['$scope', 'customersFactory'];
+     CustomersController.$inject = ['$scope', 'customersService'];
 
     // hooking the controller up to our application's main module
     angular.module('customersApp').controller('CustomersController', CustomersController);
