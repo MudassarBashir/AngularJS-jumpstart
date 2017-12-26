@@ -10,8 +10,13 @@
         $scope.orders = null;
 
         function init() {
-            // Search the customers for the given customerId
-            $scope.customer = customersFactory.getCustomer(customerId);
+            customersFactory.getCustomer(customerId)
+                .then(function(customer) {
+                    $scope.customer = customer.data;
+                },
+                function(data, status, header, config) {
+                    // handle error
+                });
         }
 
         init();
