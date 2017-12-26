@@ -11,8 +11,8 @@
 
         function init() {
             customersFactory.getCustomer(customerId)
-                .then(function(customer) {
-                    $scope.customer = customer.data;
+                .then(function(data) {
+                    $scope.customer = data.data;
                 },
                 function(data, status, header, config) {
                     // handle error

@@ -22,6 +22,8 @@ app.get('/customers/:id', function(req, res) {
 
 app.get('/customers', function(req, res) {
    res.json(customers);
+   // the line below, when substituted for the line above, would simulate an error returned from the server.
+    // res.json(500, {error: 'An error has occurred.'});
 });
 
 var port = 8095;

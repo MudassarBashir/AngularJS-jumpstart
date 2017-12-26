@@ -3,7 +3,7 @@
  */
  (function () {
 
-     var CustomersController = function ($scope, customersFactory, appSettings) {
+     var CustomersController = function ($scope, $log, customersFactory, appSettings) {
 
         $scope.sortBy = 'name';
         $scope.reverse = false;
@@ -12,11 +12,11 @@
 
         function init() {
             customersFactory.getCustomers()
-                .then(function(customers) {
-                        $scope.customers = customers.data;
+                .then(function(data) {
+                        $scope.customers = data.data;
                     },
                     function(data, status, header, config) {
-                        // handle error
+                        $log.log(data.data.error + ' ' + data.status);
                     });
         }
 
@@ -29,7 +29,7 @@
 
     };
 
-     CustomersController.$inject = ['$scope', 'customersFactory', 'appSettings'];
+     CustomersController.$inject = ['$scope', '$log', 'customersFactory', 'appSettings'];
 
     // hooking the controller up to our application's main module
     angular.module('customersApp').controller('CustomersController', CustomersController);
