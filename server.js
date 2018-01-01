@@ -26,6 +26,31 @@ app.get('/customers', function(req, res) {
     // res.json(500, {error: 'An error has occurred.'});
 });
 
+app.get('/orders', function(req, res) {
+    var orders = [];
+    for (var i = 0, len = customers.length; i < len; i++) {
+        for (var j =0, numberOfOrdersForCustomer = customers[i].orders.length; j < numberOfOrdersForCustomer; j++) {
+            orders.push(customers[i].orders[j]);
+        }
+    }
+    res.json(orders);
+});
+
+app.delete('/customers/:id', function(req, res) {
+    var customerId = parseInt(req.params.id);
+    var data = { status: false};
+
+    for (var i = 0, length = customers.length; i < length; i++) {
+        if (customers[i].id === customerId) {
+            customers.splice(i, 1);
+            data = { status: true };
+            break;
+        }
+    }
+
+    res.json(data);
+});
+
 var port = 8095;
 app.listen(port);
 console.log('Express listening on port ' + port);
