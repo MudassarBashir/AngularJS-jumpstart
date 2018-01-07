@@ -38,7 +38,7 @@ app.get('/orders', function(req, res) {
 
 app.delete('/customers/:id', function(req, res) {
     var customerId = parseInt(req.params.id);
-    var data = { status: false};
+    var data = { status: false };
 
     for (var i = 0, length = customers.length; i < length; i++) {
         if (customers[i].id === customerId) {
